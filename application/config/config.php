@@ -434,14 +434,14 @@ $config['standardize_newlines'] = FALSE;
 | Global XSS Filtering
 |--------------------------------------------------------------------------
 |
-| Determines whether the XSS filter is always active when GET, POST or
+| Determines whether the XSS filter is  always active when GET, POST or
 | COOKIE data is encountered
 |
 | WARNING: This feature is DEPRECATED and currently available only
 |          for backwards compatibility purposes!
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = true;
 
 /*
 |--------------------------------------------------------------------------

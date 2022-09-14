@@ -58,7 +58,7 @@
           <div class="card shadow mb-4">
 
             <div class="card-header py-3">
-                <a title="Cadastrar novo ususário" href="<?=base_url('usuarios/add ')?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-plus">&nbsp;</i>Novo</a>              
+                <a title="Cadastrar novo cliente" href="<?=base_url('clientes/add ')?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-tie">&nbsp;</i>Novo</a>              
             </div>
 
             <div class="card-header py-3">
@@ -70,30 +70,30 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Usuário</th>
-                      <th>Login</th>
-                      <th>Perfil</th>
+                      <th>Nome</th>
+                      <th>CPF / CNPJ</th>
+                      <th>Tipo cliente</th>
                       <th class="text-center pl'2">Ativo</th>
-                      <th class="text-right no-sort">Ações</th>
+                      <th class="text-right no-sort pr-2">Ações</th>
                     </tr>
                   </thead>
                   
                   <tbody>
 
-                    <?php foreach ($usuarios as  $u) { ?>
+                    <?php foreach ($clientes as  $cliente) { ?>
                       <tr>
-                          <td><?= $u->id?></td>
-                          <td><?= $u->username?></td>
-                          <td><?= $u->email?></td>
-                          <td><?= ($this->ion_auth->is_admin($u->id) ? 'Administrador': 'Vendendor') ?></td>
-                          <td class="text-center pr-4"><?= ($u->active==1)?'<span class="badge badge-info btn-small">Sim</span>':'<span class="badge badge-warning btn-small">Não</span>'?></td>
+                          <td><?= $cliente->cliente_id?></td>
+                          <td><?= $cliente->cliente_nome?></td>
+                          <td><?= $cliente->cliente_cpf_cnpj?></td>
+                          <td class="text-center "><?= ($cliente->cliente_tipo==1)?'Pessoa física':'Pessoa Jurídica'?></td>
+                          <td class="text-center pr-4"><?= ($cliente->cliente_ativo==1)?'<span class="badge badge-info btn-small">Sim</span>':'<span class="badge badge-warning btn-small">Não</span>'?></td>
                           <td class="text-right ">
-                            <a title="Editar" href="<?= base_url('usuarios/edit/'.$u->id)?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                            <a title="Exluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?=$u->id?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></ </a>
+                            <a title="Editar" href="<?= base_url('clientes/edit/'.$cliente->cliente_id)?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                            <a title="Exluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?=$cliente->cliente_id?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></ </a>
                           </td>
                         </tr>
 
-                        <div class="modal fade" id="user-<?=$u->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="user-<?=$cliente->cliente_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -105,7 +105,7 @@
                               <div class="modal-body">Se você deseja realmente excluir o registo click em <strong>Confirmo</strong></div>
                               <div class="modal-footer">
                                 <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="btn btn-danger btn-sm" href="<?= base_url('usuarios/delete/'.$u->id)?>">Confirmo</a>
+                                <a class="btn btn-danger btn-sm" href="<?= base_url('clientes/delete/'.$cliente->cliente_id)?>">Confirmo</a>
                               </div>
                             </div>
                           </div>
